@@ -18,7 +18,7 @@ def home():
 
 @app.route("/search")
 def search_user():
-    name = request.args.get('name')
+    name = request.args.get('name').lower()
     bnet_id = request.args.get('bnet_id')
     if bnet_id is not None:
         players = search_player_by_bnet_id(str(name) + '#' + str(bnet_id))
