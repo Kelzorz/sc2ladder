@@ -38,7 +38,7 @@ def init_ladder_db():
 def search_player_by_name(username):
     db = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
     c = db.cursor()
-    c.execute('''SELECT * FROM users WHERE bnet_id LIKE %s OR username LIKE %s''', 
+    c.execute('''SELECT * FROM users WHERE bnet_id LIKE %s OR LOWER(username) LIKE %s''', 
         [username + '%', username + '%'])
     players = c.fetchall()
     db.close()
